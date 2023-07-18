@@ -45,7 +45,7 @@ public class Contador extends Application {
         boxConteudo.getChildren().add(boxBotoes);
 
         String caminhoCss = getClass()
-                .getResource("Contador.css").toExternalForm();
+                .getResource("/src/main/java/br/com/projetojavafx/Contador.css").toExternalForm();
 
         Scene cenaPrincipal = new Scene(boxConteudo, 400, 400);
         cenaPrincipal.getStylesheets().add(caminhoCss);
