@@ -11,6 +11,6 @@ module com.example.projetojavafx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens br.com.projetojavafx to javafx.fxml;
-    exports br.com.projetojavafx;
+    opens br.com.contadorfx to javafx.fxml;
+    exports br.com.contadorfx;
 }

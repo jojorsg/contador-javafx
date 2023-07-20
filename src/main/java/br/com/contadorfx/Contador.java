@@ -1,4 +1,4 @@
-package br.com.projetojavafx;
+package br.com.contadorfx;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -12,22 +12,39 @@ import javafx.stage.Stage;
 public class Contador extends Application {
 
     private int contador = 0;
+    private void atualizarLabelNumero(Label label) {
+        label.setText(Integer.toString(contador));
+
+        label.getStyleClass().remove("verde");
+        label.getStyleClass().remove("vermelho");
+
+        if (contador > 0) {
+            label.getStyleClass().add("verde");
+        } else if (contador < 0) {
+            label.getStyleClass().add("vermelho");
+        }
+
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         Label labelTitulo = new Label("Contador");
+        labelTitulo.getStyleClass().add("titulo");
         Label labelNumero = new Label("0");
+        labelNumero.getStyleClass().add("numero");
 
         Button botaoDecremento = new Button("-");
+        botaoDecremento.getStyleClass().add("botoes");
         botaoDecremento.setOnAction(e -> {
             contador--;
-            labelNumero.setText(Integer.toString(contador));
+            atualizarLabelNumero(labelNumero);
         });
         Button botaoIncremento = new Button("+");
+        botaoIncremento.getStyleClass().add("botoes");
         botaoIncremento.setOnAction(e -> {
             contador++;
-            labelNumero.setText(Integer.toString(contador));
+            atualizarLabelNumero(labelNumero);
         });
 
         HBox boxBotoes = new HBox();
@@ -45,10 +62,11 @@ public class Contador extends Application {
         boxConteudo.getChildren().add(boxBotoes);
 
         String caminhoCss = getClass()
-                .getResource("/src/main/java/br/com/projetojavafx/Contador.css").toExternalForm();
+                .getResource("/Contador.css").toExternalForm();
 
         Scene cenaPrincipal = new Scene(boxConteudo, 400, 400);
         cenaPrincipal.getStylesheets().add(caminhoCss);
+        cenaPrincipal.getStylesheets().add("https://fonts.googleapis.com/css?family=Oswald");
 
         primaryStage.setScene(cenaPrincipal);
         primaryStage.show();
